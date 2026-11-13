@@ -493,6 +493,11 @@ button:focus-visible {
   align-items: start;
 }
 
+.chapter-grid > *,
+.story-grid > * {
+  min-width: 0;
+}
+
 .chapter-label {
   position: sticky;
   top: 120px;
@@ -841,9 +846,13 @@ q {
 /* ---------------------------------------------------------
    13. Tables
    --------------------------------------------------------- */
+.table-scroll {
+  margin-bottom: 36px;
+}
+
 .data-table {
   width: 100%;
-  margin: 0 0 36px;
+  margin: 0;
   border-collapse: collapse;
   font-size: 0.92rem;
   text-align: left;
@@ -1409,9 +1418,14 @@ q {
   }
 
   .data-table {
-    display: block;
-    overflow-x: auto;
+    display: table;
+    min-width: 560px;
     white-space: nowrap;
+  }
+
+  .table-scroll {
+    overflow-x: auto;
+    padding-bottom: 2px;
   }
 
   .data-table caption {

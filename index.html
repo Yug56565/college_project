@@ -3,24 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="The Blue Plate: a step-by-step guide to baking classic chewy chocolate chip cookies at home.">
-  <title>The Blue Plate | Classic Chocolate Chip Cookies</title>
+  <meta name="description" content="The Blue Plate: an editorial, step-by-step guide to baking classic chewy chocolate chip cookies at home.">
+  <meta name="author" content="Yug">
+  <title>The Blue Plate &middot; Chocolate Chip Cookies</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
 
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
+  <!-- Utility strip -->
+  <div class="utility">
+    <div class="wrap utility-inner">
+      <p class="utility-issue">Issue 01 &mdash; The American Bakery</p>
+      <p class="utility-meta">Makes 24 cookies &middot; 1 hr 15 min total</p>
+    </div>
+  </div>
+
   <header class="site-header">
     <div class="wrap header-inner">
-      <p class="brand">The Blue Plate</p>
+      <a class="brand" href="#top">
+        <span class="brand-mark" aria-hidden="true">BP</span>
+        <span class="brand-text">
+          <span class="brand-name">The Blue Plate</span>
+          <span class="brand-tagline">A single-recipe journal</span>
+        </span>
+      </a>
       <nav class="site-nav" aria-label="Main navigation">
         <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#ingredients">Ingredients</a></li>
+          <li><a href="#story">Story</a></li>
+          <li><a href="#recipe">Recipe</a></li>
           <li><a href="#method">Method</a></li>
-          <li><a href="#why-bake">Why Bake</a></li>
-          <li><a href="#quotes">Quotes</a></li>
+          <li><a href="#notes">Notes</a></li>
+          <li><a href="#variations">Variations</a></li>
         </ul>
       </nav>
     </div>
@@ -29,255 +47,503 @@
   <main id="main-content">
 
     <!-- Hero -->
-    <figure class="hero">
-      <img src="images/cookie-stack.jpg"
-           alt="A tall stack of golden chocolate chip cookies on a light surface"
-           width="1280" height="853">
-      <figcaption>
-        <span class="hero-title">Classic Chocolate Chip Cookies</span>
-        <span class="hero-subtitle">Crisp at the edge, soft in the middle, and ready in about an hour.</span>
-      </figcaption>
-    </figure>
-
-    <div class="wrap">
-
-      <!-- Expository introduction -->
-      <section id="about" class="section">
-        <h1>About This Recipe</h1>
-        <p>
-          The chocolate chip cookie is barely a century old, and it was invented almost by
-          accident. In 1938, Ruth Wakefield ran the Toll House Inn in Whitman, Massachusetts,
-          where she baked thin butter cookies for her guests. According to the story the inn
-          itself told for decades, she chopped a Nestl&eacute; semisweet chocolate bar into
-          the dough expecting the pieces to melt into the batter. They did not. The chocolate
-          held its shape, softened into pockets, and the cookie that came out of the oven
-          became the most baked sweet in America.
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-media">
+        <img src="images/cookie-stack.jpg"
+             alt="A tall stack of golden chocolate chip cookies on a pale surface"
+             width="1280" height="853" fetchpriority="high">
+      </div>
+      <div class="hero-body wrap">
+        <p class="eyebrow">Recipe No. 01</p>
+        <h1 id="hero-title" class="hero-title">Chocolate <em>Chip</em><br>Cookies</h1>
+        <p class="hero-deck">
+          Crisp at the edge, soft through the middle, and heavy with melted chocolate.
+          The classic American cookie, written out step by step.
         </p>
-        <p>
-          What makes the recipe work is a small balance of chemistry. Brown sugar brings
-          moisture and a molasses note, so the center stays chewy while the edges set firm.
-          Baking soda raises the dough just enough to keep it from flattening, and a short
-          chill in the refrigerator firms the butter so the cookies spread slowly instead of
-          running across the tray. There is no trick beyond patience &mdash; the dough simply
-          needs a little rest before it bakes.
-        </p>
-        <p class="pull-note">
-          As any home baker will tell you, <q>the wait is part of the recipe</q> &mdash; and
-          it is the step most people skip.
-        </p>
-      </section>
-
-      <!-- Recipe card -->
-      <section class="section recipe-card" aria-labelledby="recipe-heading">
-        <h2 id="recipe-heading">The Recipe</h2>
-
-        <dl class="recipe-meta">
-          <div>
-            <dt>Prep time</dt>
-            <dd>20 minutes</dd>
-          </div>
-          <div>
-            <dt>Chill time</dt>
-            <dd>30 minutes</dd>
-          </div>
-          <div>
-            <dt>Bake time</dt>
-            <dd>10&ndash;12 minutes</dd>
-          </div>
-          <div>
-            <dt>Yield</dt>
-            <dd>About 24 cookies</dd>
-          </div>
-        </dl>
-
-        <div class="recipe-columns">
-
-          <article id="ingredients" class="recipe-panel">
-            <h3>Ingredients</h3>
-            <h4>For the dough</h4>
-            <ul class="ingredient-list">
-              <li>2&frac14; cups (280 g) all-purpose flour</li>
-              <li>1 teaspoon baking soda</li>
-              <li>1 teaspoon fine salt</li>
-              <li>1 cup (227 g) unsalted butter, softened</li>
-              <li>&frac34; cup (150 g) granulated sugar</li>
-              <li>&frac34; cup (165 g) packed brown sugar</li>
-              <li>2 large eggs, at room temperature</li>
-              <li>2 teaspoons vanilla extract</li>
-            </ul>
-            <h4>For the finish</h4>
-            <ul class="ingredient-list">
-              <li>2 cups (340 g) semisweet chocolate chips</li>
-              <li>Flaky sea salt, to finish (optional)</li>
-            </ul>
-            <aside class="note">
-              <h5>Baker&rsquo;s note</h5>
-              <p>
-                Cold butter will not cream properly. Leave it on the counter for about an
-                hour before you begin &mdash; it should give slightly when pressed with a
-                finger but still feel cool.
-              </p>
-            </aside>
-          </article>
-
-          <article id="method" class="recipe-panel">
-            <h3>Step-by-Step Method</h3>
-            <ol class="method-list">
-              <li>
-                <strong>Heat the oven.</strong> Set a rack in the middle of the oven and
-                preheat to 180&nbsp;&deg;C (350&nbsp;&deg;F). Line two baking sheets with
-                parchment paper.
-              </li>
-              <li>
-                <strong>Mix the dry ingredients.</strong> Whisk the flour, baking soda, and
-                salt together in a medium bowl.
-              </li>
-              <li>
-                <strong>Cream the butter and sugars.</strong> Beat the softened butter with
-                both sugars for 3 full minutes, until pale and fluffy. Scrape down the bowl
-                halfway through.
-              </li>
-              <li>
-                <strong>Add the eggs and vanilla.</strong> Beat in the eggs one at a time,
-                mixing well after each, then stir in the vanilla.
-              </li>
-              <li>
-                <strong>Fold in the flour.</strong> Add the dry ingredients in two additions
-                and mix on low speed only until the last streaks of flour disappear.
-              </li>
-              <li>
-                <strong>Add the chocolate.</strong> Stir in the chocolate chips with a wooden
-                spoon or spatula, working from the bottom of the bowl.
-              </li>
-              <li>
-                <strong>Chill the dough.</strong> Cover the bowl and refrigerate for
-                30 minutes. This firms the butter and deepens the flavour.
-              </li>
-              <li>
-                <strong>Scoop.</strong> Portion the dough into balls of about 2 tablespoons
-                and space them 5&nbsp;cm apart on the prepared sheets.
-              </li>
-              <li>
-                <strong>Bake.</strong> Bake one sheet at a time for 10&ndash;12 minutes,
-                until the edges are golden but the centres still look slightly underdone.
-              </li>
-              <li>
-                <strong>Rest and cool.</strong> Leave the cookies on the warm tray for
-                5 minutes, then transfer them to a wire rack. Sprinkle with flaky salt while
-                they are still warm.
-              </li>
-            </ol>
-            <aside class="note">
-              <h5>Chef&rsquo;s tip</h5>
-              <p>
-                For a thicker, chewier cookie, chill the dough overnight and bake from cold.
-                The flavour improves with every hour in the refrigerator.
-              </p>
-            </aside>
-          </article>
-
+        <div class="hero-actions">
+          <a class="button" href="#recipe">Jump to recipe</a>
+          <a class="button button-ghost" href="#story">Read the story</a>
         </div>
-      </section>
+      </div>
+      <ul class="hero-facts">
+        <li><span class="fact-label">Prep</span><span class="fact-value">20 min</span></li>
+        <li><span class="fact-label">Chill</span><span class="fact-value">30 min</span></li>
+        <li><span class="fact-label">Bake</span><span class="fact-value">12 min</span></li>
+        <li><span class="fact-label">Yield</span><span class="fact-value">24 cookies</span></li>
+        <li><span class="fact-label">Level</span><span class="fact-value">Easy</span></li>
+      </ul>
+    </section>
 
-      <!-- Expository detail section -->
-      <section id="gallery" class="section">
-        <h2>From Dough to Cookie</h2>
-        <p>
-          Three stages matter more than any others: the raw dough, the moment the tray leaves
-          the oven, and the finished cookie once it has cooled. The photographs below show
-          each stage.
-        </p>
-        <div class="gallery">
-          <figure>
+    <!-- 01 Story -->
+    <section class="chapter" id="story" aria-labelledby="story-title">
+      <div class="wrap chapter-grid">
+        <div class="chapter-label">
+          <p class="chapter-number">01</p>
+          <p class="chapter-name">The Story</p>
+        </div>
+        <div class="chapter-body story-grid">
+          <div class="prose">
+            <h2 id="story-title">A cookie invented by accident</h2>
+            <p class="lede">
+              The chocolate chip cookie is barely a century old, and it arrived by mistake.
+              In 1938 Ruth Wakefield ran the Toll House Inn in Whitman, Massachusetts, baking
+              thin butter cookies for her guests. She chopped a bar of semisweet chocolate into
+              the dough expecting it to melt into the batter. It did not.
+            </p>
+            <p>
+              The chocolate held its shape and softened into pockets instead. The cookie that
+              came out of that oven became the most baked sweet in America, and the inn&rsquo;s
+              recipe &mdash; printed on the back of every Nestl&eacute; chocolate bar for
+              decades &mdash; is still the template most bakers start from.
+            </p>
+            <p>
+              What makes the formula work is a small balance of chemistry. Brown sugar brings
+              moisture and a molasses note, so the centre stays chewy while the edges set firm.
+              Baking soda lifts the dough just enough to keep it from flattening, and a short
+              chill firms the butter so the cookies spread slowly instead of running across
+              the tray. Nothing here is difficult. <q>The wait is part of the recipe</q> &mdash;
+              and it is the step most people skip.
+            </p>
+          </div>
+          <aside class="recipe-aside story-aside">
+            <h3>Why this recipe works</h3>
+            <ul class="check-list">
+              <li>Two sugars, not one: white for structure, brown for chew.</li>
+              <li>Butter at cool room temperature creams into air, not grease.</li>
+              <li>A thirty-minute chill stops the spread and deepens the flavour.</li>
+            </ul>
+            <p class="aside-footnote">
+              One bowl, one tray, and a cooling rack. Nothing else is required.
+            </p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 Recipe -->
+    <section class="chapter chapter-tint" id="recipe" aria-labelledby="recipe-title">
+      <div class="wrap chapter-grid">
+        <div class="chapter-label">
+          <p class="chapter-number">02</p>
+          <p class="chapter-name">Ingredients</p>
+        </div>
+        <div class="chapter-body">
+          <h2 id="recipe-title">What you will need</h2>
+          <p class="section-deck">
+            Everything below is a supermarket staple. Weigh the flour if you can &mdash; a
+            kitchen scale is the single biggest upgrade to a home baker&rsquo;s accuracy.
+          </p>
+
+          <div class="ingredient-columns">
+            <div class="ingredient-group">
+              <h3>For the dough</h3>
+              <ul class="ingredient-list">
+                <li><span class="amount">2&frac14; cups (280 g)</span> all-purpose flour</li>
+                <li><span class="amount">1 tsp</span> baking soda</li>
+                <li><span class="amount">1 tsp</span> fine sea salt</li>
+                <li><span class="amount">1 cup (227 g)</span> unsalted butter, softened</li>
+                <li><span class="amount">&frac34; cup (150 g)</span> granulated sugar</li>
+                <li><span class="amount">&frac34; cup (165 g)</span> packed brown sugar</li>
+                <li><span class="amount">2 large</span> eggs, room temperature</li>
+                <li><span class="amount">2 tsp</span> vanilla extract</li>
+              </ul>
+            </div>
+            <div class="ingredient-group">
+              <h3>To finish</h3>
+              <ul class="ingredient-list">
+                <li><span class="amount">2 cups (340 g)</span> semisweet chocolate chips</li>
+                <li><span class="amount">1 pinch</span> flaky sea salt, optional</li>
+              </ul>
+              <div class="equipment">
+                <h4>Equipment</h4>
+                <ul class="tag-list">
+                  <li>Two mixing bowls</li>
+                  <li>Balloon whisk</li>
+                  <li>Stand or hand mixer</li>
+                  <li>Rubber spatula</li>
+                  <li>Two baking sheets</li>
+                  <li>Parchment paper</li>
+                  <li>2-tbsp scoop</li>
+                  <li>Wire rack</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <aside class="note note-wide">
+            <p class="note-label">Baker&rsquo;s note</p>
+            <p>
+              Cold butter will not cream properly. Leave it on the counter for about an hour
+              before you begin &mdash; it should give slightly when pressed with a finger but
+              still feel cool to the touch.
+            </p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 Method -->
+    <section class="chapter" id="method" aria-labelledby="method-title">
+      <div class="wrap chapter-grid">
+        <div class="chapter-label">
+          <p class="chapter-number">03</p>
+          <p class="chapter-name">Method</p>
+        </div>
+        <div class="chapter-body">
+          <h2 id="method-title">Ten steps, start to finish</h2>
+          <p class="section-deck">
+            Read the whole method once before you begin. The oven should be at temperature
+            before the first tray goes in, so preheat early.
+          </p>
+
+          <ol class="method-list">
+            <li class="step">
+              <div class="step-head">
+                <h3>Heat the oven</h3>
+                <p class="step-time">5 min</p>
+              </div>
+              <p>
+                Set a rack in the middle of the oven and preheat to 180&nbsp;&deg;C
+                (350&nbsp;&deg;F). Line two baking sheets with parchment paper.
+              </p>
+            </li>
+            <li class="step">
+              <div class="step-head">
+                <h3>Mix the dry ingredients</h3>
+                <p class="step-time">2 min</p>
+              </div>
+              <p>
+                Whisk the flour, baking soda and salt together in a medium bowl until evenly
+                combined.
+              </p>
+            </li>
+            <li class="step">
+              <div class="step-head">
+                <h3>Cream the butter and sugars</h3>
+                <p class="step-time">3 min</p>
+              </div>
+              <p>
+                Beat the softened butter with both sugars for a full three minutes, until pale
+                and fluffy. Scrape down the bowl halfway through so nothing is left behind.
+              </p>
+            </li>
+            <li class="step">
+              <div class="step-head">
+                <h3>Add the eggs and vanilla</h3>
+                <p class="step-time">2 min</p>
+              </div>
+              <p>
+                Beat in the eggs one at a time, mixing well after each addition, then stir in
+                the vanilla extract.
+              </p>
+            </li>
+            <li class="step">
+              <div class="step-head">
+                <h3>Fold in the flour</h3>
+                <p class="step-time">2 min</p>
+              </div>
+              <p>
+                Add the dry ingredients in two additions and mix on low speed only until the
+                last streaks of flour disappear. Overmixing builds gluten and makes the cookies
+                tough.
+              </p>
+            </li>
+            <li class="step">
+              <div class="step-head">
+                <h3>Add the chocolate</h3>
+                <p class="step-time">1 min</p>
+              </div>
+              <p>
+                Stir the chocolate chips through with a wooden spoon or firm spatula, working
+                from the bottom of the bowl so the chips distribute evenly.
+              </p>
+            </li>
+            <li class="step">
+              <div class="step-head">
+                <h3>Chill the dough</h3>
+                <p class="step-time">30 min</p>
+              </div>
+              <p>
+                Cover the bowl and refrigerate for thirty minutes. This firms the butter so the
+                cookies hold their shape, and it lets the flour hydrate for a chewier crumb.
+              </p>
+            </li>
+            <li class="step">
+              <div class="step-head">
+                <h3>Scoop</h3>
+                <p class="step-time">5 min</p>
+              </div>
+              <p>
+                Portion the dough into balls of about two tablespoons and space them five
+                centimetres apart on the prepared sheets.
+              </p>
+            </li>
+            <li class="step">
+              <div class="step-head">
+                <h3>Bake</h3>
+                <p class="step-time">10&ndash;12 min</p>
+              </div>
+              <p>
+                Bake one sheet at a time for ten to twelve minutes, until the edges are golden
+                but the centres still look slightly underdone. They finish on the tray.
+              </p>
+            </li>
+            <li class="step">
+              <div class="step-head">
+                <h3>Rest and cool</h3>
+                <p class="step-time">10 min</p>
+              </div>
+              <p>
+                Leave the cookies on the warm tray for five minutes, then transfer them to a
+                wire rack. Sprinkle with flaky salt while they are still warm.
+              </p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 Notes -->
+    <section class="chapter chapter-tint" id="notes" aria-labelledby="notes-title">
+      <div class="wrap chapter-grid">
+        <div class="chapter-label">
+          <p class="chapter-number">04</p>
+          <p class="chapter-name">Notes</p>
+        </div>
+        <div class="chapter-body">
+          <h2 id="notes-title">Troubleshooting, storage &amp; make-ahead</h2>
+
+          <table class="data-table">
+            <caption>If something goes wrong, start here</caption>
+            <thead>
+              <tr>
+                <th scope="col">Problem</th>
+                <th scope="col">Likely cause</th>
+                <th scope="col">The fix</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Cookies spread too flat</th>
+                <td>Warm dough or stale baking soda</td>
+                <td>Chill thirty minutes; test the soda in vinegar</td>
+              </tr>
+              <tr>
+                <th scope="row">Dough feels dry and crumbly</th>
+                <td>Too much flour from cup measuring</td>
+                <td>Weigh the flour, or spoon and level it lightly</td>
+              </tr>
+              <tr>
+                <th scope="row">Tops stay pale</th>
+                <td>The oven runs cool</td>
+                <td>Use an oven thermometer and bake a minute longer</td>
+              </tr>
+              <tr>
+                <th scope="row">Bottoms burn</th>
+                <td>Dark trays or a low rack</td>
+                <td>Switch to light metal and move the rack to the middle</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="card-row">
+            <article class="info-card">
+              <h3>Storage</h3>
+              <p>
+                Keep baked cookies in an airtight container at room temperature for up to five
+                days. Add a slice of bread to the tin if they start to crisp.
+              </p>
+            </article>
+            <article class="info-card">
+              <h3>Make ahead</h3>
+              <p>
+                Scoop the dough into balls and freeze on a tray, then bag them for up to three
+                months. Bake from frozen, adding two minutes to the time.
+              </p>
+            </article>
+            <article class="info-card">
+              <h3>To serve</h3>
+              <p>
+                Warm a cooled cookie for eight seconds in the microwave, or twenty seconds
+                under a hot grill, and the chocolate turns molten again.
+              </p>
+            </article>
+          </div>
+
+          <table class="data-table data-table-compact">
+            <caption>Approximate nutrition, per cookie</caption>
+            <thead>
+              <tr>
+                <th scope="col">Energy</th>
+                <th scope="col">Fat</th>
+                <th scope="col">Carbs</th>
+                <th scope="col">Sugar</th>
+                <th scope="col">Protein</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>210 kcal</td>
+                <td>11 g</td>
+                <td>27 g</td>
+                <td>16 g</td>
+                <td>3 g</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 Variations -->
+    <section class="chapter" id="variations" aria-labelledby="variations-title">
+      <div class="wrap chapter-grid">
+        <div class="chapter-label">
+          <p class="chapter-number">05</p>
+          <p class="chapter-name">Variations</p>
+        </div>
+        <div class="chapter-body">
+          <h2 id="variations-title">Three ways to change it up</h2>
+          <p class="section-deck">
+            Keep the base formula and swap one element at a time. Each of these has been
+            tested against the same method above.
+          </p>
+
+          <div class="variation-grid">
+            <article class="variation">
+              <p class="variation-tag">Nutty</p>
+              <h3>Brown butter &amp; sea salt</h3>
+              <p>
+                Brown the butter until it smells of hazelnuts, cool it for twenty minutes, then
+                continue from step three. Finish with flaky salt.
+              </p>
+            </article>
+            <article class="variation">
+              <p class="variation-tag">Dark</p>
+              <h3>Double chocolate</h3>
+              <p>
+                Replace a quarter cup of the flour with cocoa powder and use dark chocolate
+                chunks. Reduce the bake by one minute.
+              </p>
+            </article>
+            <article class="variation">
+              <p class="variation-tag">Fruity</p>
+              <h3>Walnut &amp; cranberry</h3>
+              <p>
+                Hold back half the chocolate and add three-quarters of a cup each of toasted
+                walnuts and dried cranberries.
+              </p>
+            </article>
+          </div>
+
+          <figure class="editorial-figure">
             <img src="images/cookies-board.jpg"
                  alt="Freshly baked chocolate chip cookies arranged on a wooden cutting board"
                  width="1280" height="960" loading="lazy">
             <figcaption>
-              Fresh from the tray and cooling on a board.
+              <span class="fig-title">Fresh from the tray</span>
+              Cool them on the board and the carry-over heat finishes the centres.
               <span class="credit">Photo: Mshuang2, CC0, via Wikimedia Commons.</span>
             </figcaption>
           </figure>
-          <figure>
-            <img src="images/cookie-detail.jpg"
-                 alt="Close-up of a chocolate chip cookie showing melted chocolate and a cracked surface"
-                 width="1280" height="960" loading="lazy">
-            <figcaption>
-              A close look at the cracked surface and molten chocolate.
-              <span class="credit">Photo: inajeep, CC BY 2.0, via Wikimedia Commons.</span>
-            </figcaption>
-          </figure>
-          <figure>
-            <img src="images/cookies-oven.jpg"
-                 alt="Chocolate chip cookies cooling on a baking sheet just out of the oven"
-                 width="1280" height="960" loading="lazy">
-            <figcaption>
-              The five-minute rest on the tray finishes the bake.
-              <span class="credit">Photo: Infrogmation, CC BY-SA 4.0, via Wikimedia Commons.</span>
-            </figcaption>
-          </figure>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- Persuasive section -->
-      <section id="why-bake" class="section persuasive">
-        <h2>Why You Should Bake These at Home</h2>
-        <p>
-          A good bakery cookie costs three or four times what a homemade one does, and it
-          still cannot match the smell that fills a kitchen at the ten-minute mark. Baking
-          your own is worth the effort for three reasons.
-        </p>
-        <ul class="argument-list">
-          <li>
-            <h3>You control every ingredient</h3>
-            <p>
-              You decide how dark the brown sugar is, whether the chocolate is milk or dark,
-              and how much salt goes in. Nothing arrives pre-mixed, and nothing is hidden
-              behind a label.
-            </p>
-          </li>
-          <li>
-            <h3>One batch costs less than a coffee</h3>
-            <p>
-              Flour, sugar, butter, eggs, and chocolate are pantry staples. A single batch
-              makes two dozen cookies for a fraction of the price of buying them one at a time.
-            </p>
-          </li>
-          <li>
-            <h3>The process itself is the reward</h3>
-            <p>
-              Measuring, creaming, and scooping are simple, repeatable actions with a visible
-              result. For an hour, the only thing on your mind is the dough in front of you.
-            </p>
-          </li>
-        </ul>
-      </section>
-
-      <!-- Quotes -->
-      <section id="quotes" class="section quotes">
-        <h2>Words to Bake By</h2>
-        <blockquote cite="https://www.goodreads.com/author/quotes/19400.Julia_Child">
+    <!-- 06 Quotes -->
+    <section class="chapter quotes" id="quotes" aria-labelledby="quotes-title">
+      <div class="wrap">
+        <p class="eyebrow eyebrow-center">06 &mdash; Words to bake by</p>
+        <h2 id="quotes-title" class="visually-hidden">Quotes</h2>
+        <blockquote class="pull-quote" cite="https://www.goodreads.com/author/quotes/19400.Julia_Child">
           <p>
             &ldquo;The only real stumbling block is fear of failure. In cooking you&rsquo;ve
             got to have a what-the-hell attitude.&rdquo;
           </p>
           <footer>&mdash; <cite>Julia Child</cite></footer>
         </blockquote>
-        <blockquote>
-          <p>&ldquo;Cookies are made of butter and love.&rdquo;</p>
-          <footer>&mdash; <cite>Norwegian proverb</cite></footer>
-        </blockquote>
-      </section>
+        <div class="quote-pair">
+          <blockquote>
+            <p>&ldquo;Cookies are made of butter and love.&rdquo;</p>
+            <footer>&mdash; <cite>Norwegian proverb</cite></footer>
+          </blockquote>
+          <blockquote>
+            <p>
+              &ldquo;The smell of chocolate chip cookies in the oven is the smell of a house
+              that is being looked after.&rdquo;
+            </p>
+            <footer>&mdash; <cite>The Blue Plate</cite></footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
 
+    <div class="wrap">
+      <div class="gallery gallery-tight">
+        <figure>
+          <img src="images/cookie-detail.jpg"
+               alt="Close-up of a chocolate chip cookie showing melted chocolate and a cracked surface"
+               width="1280" height="960" loading="lazy">
+          <figcaption>
+            The cracked surface comes from the chill.
+            <span class="credit">Photo: inajeep, CC BY 2.0, via Wikimedia Commons.</span>
+          </figcaption>
+        </figure>
+        <figure>
+          <img src="images/cookies-oven.jpg"
+               alt="Chocolate chip cookies cooling on a baking sheet just out of the oven"
+               width="1280" height="960" loading="lazy">
+          <figcaption>
+            Five minutes on the tray finishes the bake.
+            <span class="credit">Photo: Infrogmation, CC BY-SA 4.0, via Wikimedia Commons.</span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <aside class="author-card">
+        <p class="author-monogram" aria-hidden="true">Y</p>
+        <div>
+          <p class="eyebrow">Recipe &amp; words</p>
+          <h2 class="author-name">Yug</h2>
+          <p class="author-note">
+            A single-page recipe journal built with semantic HTML and an external stylesheet,
+            as a first web development project.
+          </p>
+        </div>
+      </aside>
     </div>
+
   </main>
 
   <footer class="site-footer">
-    <div class="wrap">
-      <p class="footer-brand">The Blue Plate</p>
+    <div class="wrap footer-grid">
+      <div class="footer-col">
+        <p class="footer-brand">The Blue Plate</p>
+        <p class="footer-blurb">
+          A single-recipe journal about the everyday baking worth repeating.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h2 class="footer-heading">Sections</h2>
+        <ul class="footer-links">
+          <li><a href="#story">The Story</a></li>
+          <li><a href="#recipe">Ingredients</a></li>
+          <li><a href="#method">Method</a></li>
+          <li><a href="#notes">Notes</a></li>
+          <li><a href="#variations">Variations</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h2 class="footer-heading">Credits</h2>
+        <p class="footer-credit">
+          Photography from Wikimedia Commons: Lisa Fotios (CC0), Mshuang2 (CC0),
+          inajeep (CC BY 2.0), Infrogmation (CC BY-SA 4.0).
+        </p>
+      </div>
+    </div>
+    <div class="wrap footer-bottom">
       <p>&copy; 2026 Yug. All rights reserved.</p>
-      <p class="footer-note">
-        A single-page recipe project built with semantic HTML and an external stylesheet.
-      </p>
+      <p><a href="#top">Back to top &uarr;</a></p>
     </div>
   </footer>
 

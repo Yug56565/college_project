@@ -1,30 +1,51 @@
 /* =========================================================
-   The Blue Plate - Classic Chocolate Chip Cookies
+   THE BLUE PLATE - Classic Chocolate Chip Cookies
    External stylesheet: styles/style.css
-   Palette: soft light blue with a professional slate accent
+   An editorial, cookbook-style layout in light blue and brass.
    ========================================================= */
 
-/* ---------- 1. Design tokens ---------- */
+/* ---------------------------------------------------------
+   01. Design tokens
+   --------------------------------------------------------- */
 :root {
-  --bg: #f7fbfd;
-  --surface: #ffffff;
-  --tint: #e6f2fa;
-  --tint-strong: #d3e8f5;
-  --line: #cfe6f3;
-  --primary: #2f6f8f;
-  --primary-dark: #245770;
-  --deep: #12303f;
-  --text: #26343c;
-  --muted: #5b7280;
-  --shadow: 0 2px 6px rgba(18, 48, 63, 0.06);
-  --shadow-lg: 0 10px 28px rgba(18, 48, 63, 0.12);
-  --radius: 10px;
-  --wrap: 1080px;
-  --font-body: "Segoe UI", Helvetica, Arial, sans-serif;
-  --font-head: Georgia, "Times New Roman", serif;
+  /* Surfaces */
+  --paper: #fcfdfe;
+  --ivory: #f4f9fc;
+  --mist: #e8f2f8;
+  --line: #d7e7f1;
+  --line-strong: #bed8e8;
+
+  /* Ink */
+  --ink: #10242e;
+  --text: #2b3f49;
+  --muted: #61798a;
+
+  /* Accents */
+  --blue: #2f6f8f;
+  --blue-dark: #1f4e66;
+  --deep: #102c3a;
+  --brass: #a5854f;
+  --brass-light: #c8a86c;
+
+  /* Effects */
+  --shadow-sm: 0 1px 2px rgba(16, 44, 58, 0.05);
+  --shadow-md: 0 14px 34px rgba(16, 44, 58, 0.08);
+  --shadow-lg: 0 24px 60px rgba(16, 44, 58, 0.12);
+
+  /* Type */
+  --display: "Fraunces", "Iowan Old Style", Georgia, "Times New Roman", serif;
+  --body: "Inter", "Segoe UI", Helvetica, Arial, sans-serif;
+
+  /* Metrics */
+  --wrap: 1180px;
+  --gutter: 32px;
+  --radius: 4px;
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
-/* ---------- 2. Base ---------- */
+/* ---------------------------------------------------------
+   02. Reset and base
+   --------------------------------------------------------- */
 *,
 *::before,
 *::after {
@@ -33,52 +54,51 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
   margin: 0;
-  padding: 0;
-  background-color: var(--bg);
+  background-color: var(--paper);
   color: var(--text);
-  font-family: var(--font-body);
+  font-family: var(--body);
   font-size: 1rem;
-  line-height: 1.7;
+  font-weight: 400;
+  line-height: 1.75;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 h1,
 h2,
 h3,
-h4,
-h5 {
-  font-family: var(--font-head);
-  line-height: 1.25;
-  color: var(--deep);
-  margin: 0 0 0.6em;
-  font-weight: 700;
+h4 {
+  margin: 0 0 0.5em;
+  font-family: var(--display);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--ink);
+  letter-spacing: -0.01em;
 }
 
-h1 { font-size: 2.1rem; }
-h2 { font-size: 1.65rem; }
-h3 { font-size: 1.25rem; }
-h4 { font-size: 1rem; letter-spacing: 0.02em; text-transform: uppercase; }
-h5 { font-size: 0.9rem; letter-spacing: 0.06em; text-transform: uppercase; }
+h1 { font-size: clamp(2.5rem, 6vw, 4.25rem); }
+h2 { font-size: clamp(1.7rem, 3.2vw, 2.35rem); }
+h3 { font-size: 1.15rem; }
+h4 { font-size: 0.95rem; }
 
 p {
-  margin: 0 0 1.1em;
+  margin: 0 0 1.15em;
 }
 
 a {
-  color: var(--primary);
+  color: var(--blue);
   text-decoration: none;
-  border-bottom: 1px solid transparent;
-  transition: color 0.2s ease, border-color 0.2s ease;
+  transition: color 0.25s var(--ease), border-color 0.25s var(--ease);
 }
 
 a:hover,
 a:focus-visible {
-  color: var(--primary-dark);
-  border-bottom-color: currentColor;
+  color: var(--blue-dark);
 }
 
 img {
@@ -90,97 +110,168 @@ img {
 ul,
 ol {
   margin: 0 0 1.2em;
-  padding-left: 1.3em;
+  padding-left: 1.25em;
 }
 
 li {
-  margin-bottom: 0.45em;
+  margin-bottom: 0.5em;
 }
 
-/* ---------- 3. Layout helper ---------- */
+strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+::selection {
+  background-color: var(--blue);
+  color: #ffffff;
+}
+
+/* ---------------------------------------------------------
+   03. Layout helpers
+   --------------------------------------------------------- */
 .wrap {
   width: 100%;
   max-width: var(--wrap);
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 var(--gutter);
 }
 
-.section {
-  padding: 44px 0;
-  border-bottom: 1px solid var(--line);
-  scroll-margin-top: 80px;
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
 }
 
-.section:last-of-type {
-  border-bottom: none;
-}
-
-.section h2 {
-  padding-bottom: 0.4em;
-  border-bottom: 3px solid var(--tint-strong);
-  display: inline-block;
-}
-
-/* ---------- 4. Accessibility: skip link ---------- */
 .skip-link {
   position: absolute;
   left: -9999px;
   top: 0;
-  background: var(--deep);
+  z-index: 200;
+  padding: 12px 20px;
+  background-color: var(--deep);
   color: #ffffff;
-  padding: 10px 18px;
-  z-index: 100;
+  font-size: 0.85rem;
 }
 
 .skip-link:focus {
-  left: 12px;
-  top: 12px;
-  border-radius: 0 0 var(--radius) var(--radius);
+  left: 16px;
+  top: 16px;
 }
 
-/* Visible keyboard focus everywhere */
 a:focus-visible,
 button:focus-visible {
-  outline: 3px solid var(--primary);
-  outline-offset: 2px;
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
 }
 
-/* ---------- 5. Header and navigation ---------- */
+/* ---------------------------------------------------------
+   04. Utility strip
+   --------------------------------------------------------- */
+.utility {
+  background-color: var(--deep);
+  color: #d9e8f0;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.utility-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 38px;
+}
+
+.utility p {
+  margin: 0;
+}
+
+.utility-issue {
+  color: var(--brass-light);
+}
+
+.utility-meta {
+  color: #a8c2d1;
+}
+
+/* ---------------------------------------------------------
+   05. Header and navigation
+   --------------------------------------------------------- */
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 50;
-  background-color: var(--surface);
+  z-index: 100;
+  background-color: rgba(252, 253, 254, 0.94);
+  backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
-  box-shadow: var(--shadow);
 }
 
 .header-inner {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  padding-top: 14px;
-  padding-bottom: 14px;
+  gap: 24px;
+  padding-top: 16px;
+  padding-bottom: 16px;
 }
 
 .brand {
-  margin: 0;
-  font-family: var(--font-head);
-  font-size: 1.35rem;
-  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--ink);
+}
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  border: 1px solid var(--brass);
+  border-radius: 50%;
+  font-family: var(--display);
+  font-size: 0.85rem;
+  font-weight: 600;
   letter-spacing: 0.04em;
-  color: var(--primary);
+  color: var(--brass);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.brand-name {
+  font-family: var(--display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.brand-tagline {
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
 .site-nav ul {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px 20px;
-  list-style: none;
+  gap: 4px 26px;
   margin: 0;
   padding: 0;
+  list-style: none;
 }
 
 .site-nav li {
@@ -188,419 +279,1165 @@ button:focus-visible {
 }
 
 .site-nav a {
+  position: relative;
   display: inline-block;
-  padding: 4px 0;
-  font-size: 0.9rem;
-  font-weight: 600;
-  letter-spacing: 0.03em;
+  padding: 6px 0;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--muted);
 }
 
+.site-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--brass);
+  transition: width 0.3s var(--ease);
+}
+
 .site-nav a:hover,
 .site-nav a:focus-visible {
-  color: var(--primary);
-  border-bottom-color: var(--primary);
+  color: var(--ink);
 }
 
-/* ---------- 6. Hero ---------- */
+.site-nav a:hover::after,
+.site-nav a:focus-visible::after {
+  width: 100%;
+}
+
+/* ---------------------------------------------------------
+   06. Hero
+   --------------------------------------------------------- */
 .hero {
   position: relative;
-  margin: 0;
-  background-color: var(--tint);
-  overflow: hidden;
+  padding: clamp(40px, 5vw, 64px) 0 0;
+  background:
+    radial-gradient(circle at 90% 8%, #eaf5fb 0%, transparent 52%),
+    linear-gradient(180deg, var(--ivory) 0%, var(--paper) 100%);
+  border-bottom: 1px solid var(--line);
+  scroll-margin-top: 90px;
 }
 
-.hero img {
+.hero-media {
+  position: relative;
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.hero-media img {
+  position: relative;
+  z-index: 1;
   width: 100%;
-  height: 420px;
+  height: clamp(260px, 42vw, 480px);
   object-fit: cover;
+  border-radius: 2px;
+  box-shadow: var(--shadow-md);
 }
 
-.hero figcaption {
+.hero-media::after {
+  content: "";
   position: absolute;
-  inset: auto 0 0 0;
-  padding: 28px 24px 26px;
-  background: linear-gradient(
-    to top,
-    rgba(18, 48, 63, 0.82) 0%,
-    rgba(18, 48, 63, 0.55) 55%,
-    rgba(18, 48, 63, 0) 100%
-  );
-  color: #ffffff;
-  text-align: center;
+  z-index: 0;
+  top: 0;
+  right: calc(var(--gutter) - 20px);
+  bottom: -20px;
+  left: calc(var(--gutter) + 20px);
+  border: 1px solid var(--brass);
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+.hero-body {
+  position: relative;
+  z-index: 1;
+  padding-top: clamp(36px, 5vw, 56px);
+}
+
+.eyebrow {
+  margin: 0 0 14px;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--brass);
 }
 
 .hero-title {
+  margin-bottom: 0.3em;
+  font-size: clamp(2.6rem, 7vw, 5rem);
+  line-height: 0.98;
+  letter-spacing: -0.025em;
+}
+
+.hero-title em {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.hero-deck {
+  max-width: 46ch;
+  margin-bottom: 28px;
+  font-size: clamp(1rem, 1.5vw, 1.12rem);
+  color: var(--muted);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: clamp(36px, 4vw, 52px);
+}
+
+/* Buttons */
+.button {
+  display: inline-block;
+  padding: 13px 26px;
+  border: 1px solid var(--blue);
+  border-radius: 2px;
+  background-color: var(--blue);
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: background-color 0.25s var(--ease), color 0.25s var(--ease),
+    border-color 0.25s var(--ease), transform 0.25s var(--ease);
+}
+
+.button:hover,
+.button:focus-visible {
+  background-color: var(--blue-dark);
+  border-color: var(--blue-dark);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.button-ghost {
+  background-color: transparent;
+  border-color: var(--line-strong);
+  color: var(--ink);
+}
+
+.button-ghost:hover,
+.button-ghost:focus-visible {
+  background-color: transparent;
+  border-color: var(--brass);
+  color: var(--brass);
+}
+
+/* Facts bar */
+.hero-facts {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: 22px var(--gutter) 26px;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+
+.hero-facts li {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 0;
+  padding-left: 18px;
+  border-left: 1px solid var(--line);
+}
+
+.hero-facts li:first-child {
+  padding-left: 0;
+  border-left: none;
+}
+
+.fact-label {
+  font-size: 0.66rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.fact-value {
+  font-family: var(--display);
+  font-size: 1.1rem;
+  color: var(--ink);
+}
+
+/* ---------------------------------------------------------
+   07. Chapter sections
+   --------------------------------------------------------- */
+.chapter {
+  padding: clamp(56px, 7vw, 88px) 0;
+  scroll-margin-top: 96px;
+}
+
+.chapter + .chapter {
+  border-top: 1px solid var(--line);
+}
+
+.chapter-tint {
+  background-color: var(--ivory);
+}
+
+.chapter-grid {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: start;
+}
+
+.chapter-label {
+  position: sticky;
+  top: 120px;
+  padding-top: 32px;
+}
+
+.chapter-number {
+  margin: 0;
+  font-family: var(--display);
+  font-size: 2.6rem;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--brass);
+  font-variant-numeric: lining-nums;
+}
+
+.chapter-number::after {
+  content: "";
   display: block;
-  font-family: var(--font-head);
-  font-size: 2.2rem;
-  font-weight: 700;
-  line-height: 1.2;
+  width: 34px;
+  height: 1px;
+  margin: 14px 0 12px;
+  background-color: var(--line-strong);
 }
 
-.hero-subtitle {
-  display: block;
-  margin-top: 8px;
-  font-size: 1rem;
-  color: #dcecf5;
+.chapter-name {
+  margin: 0;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
-/* ---------- 7. Intro section ---------- */
-#about p {
-  max-width: 72ch;
+.chapter-body > h2 {
+  max-width: 24ch;
+  margin-bottom: 0.55em;
 }
 
-.pull-note {
-  margin-top: 1.4em;
-  padding: 16px 20px;
-  background-color: var(--tint);
-  border-left: 4px solid var(--primary);
-  border-radius: 0 var(--radius) var(--radius) 0;
-  font-family: var(--font-head);
+/* Story: prose with a sticky sidebar */
+.story-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 310px;
+  gap: clamp(28px, 4vw, 56px);
+  align-items: start;
+}
+
+.story-grid .prose {
+  max-width: 64ch;
+}
+
+.story-grid h2 {
+  max-width: 24ch;
+  margin-bottom: 0.6em;
+}
+
+.story-aside {
+  margin-top: 0;
+  padding: 26px 26px 22px;
+  position: sticky;
+  top: 116px;
+}
+
+.aside-footnote {
+  margin: 1.1em 0 0;
+  padding-top: 1em;
+  border-top: 1px solid var(--line-strong);
+  font-family: var(--display);
+  font-size: 0.92rem;
+  font-style: italic;
+  color: var(--muted);
+}
+
+/* ---------------------------------------------------------
+   08. Prose
+   --------------------------------------------------------- */
+.prose {
+  max-width: 68ch;
+}
+
+.prose p {
+  color: var(--text);
+}
+
+.prose .lede {
   font-size: 1.08rem;
+  color: var(--ink);
+}
+
+.prose .lede::first-letter {
+  float: left;
+  margin: 0.08em 0.1em 0 0;
+  font-family: var(--display);
+  font-size: 3.6em;
+  line-height: 0.82;
+  font-weight: 600;
+  color: var(--blue);
 }
 
 q {
   font-style: italic;
+  color: var(--ink);
   quotes: "\201C" "\201D";
 }
 
-/* ---------- 8. Recipe meta ---------- */
-.recipe-meta {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 1px;
-  margin: 0 0 32px;
-  background-color: var(--line);
+.section-deck {
+  max-width: 62ch;
+  margin-bottom: 2em;
+  color: var(--muted);
+}
+
+/* ---------------------------------------------------------
+   09. Aside and check lists
+   --------------------------------------------------------- */
+.recipe-aside {
+  margin-top: 2em;
+  padding: 24px 26px;
+  background-color: var(--ivory);
   border: 1px solid var(--line);
+  border-top: 2px solid var(--brass);
   border-radius: var(--radius);
-  overflow: hidden;
 }
 
-.recipe-meta div {
-  background-color: var(--surface);
-  padding: 16px 18px;
-}
-
-.recipe-meta dt {
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
+.recipe-aside h3 {
+  margin-bottom: 0.8em;
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--primary);
+  color: var(--brass);
 }
 
-.recipe-meta dd {
-  margin: 4px 0 0;
-  font-family: var(--font-head);
-  font-size: 1.05rem;
-  color: var(--deep);
+.recipe-aside p:last-child {
+  margin-bottom: 0;
 }
 
-/* ---------- 9. Two-column recipe layout ---------- */
-.recipe-columns {
+.check-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.check-list li {
+  position: relative;
+  padding-left: 26px;
+  margin-bottom: 0.6em;
+  font-size: 0.95rem;
+}
+
+.check-list li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 0.62em;
+  width: 12px;
+  height: 1px;
+  background-color: var(--brass);
+}
+
+/* ---------------------------------------------------------
+   10. Ingredients
+   --------------------------------------------------------- */
+.ingredient-columns {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
-  gap: 32px;
-  align-items: start;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: clamp(28px, 4vw, 56px);
+  margin-bottom: 36px;
 }
 
-.recipe-panel h3 {
-  margin-top: 0;
-  padding-bottom: 0.35em;
-  border-bottom: 1px solid var(--line);
+.ingredient-group h3 {
+  margin-bottom: 0.9em;
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid var(--line-strong);
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
 .ingredient-list {
+  margin: 0;
+  padding: 0;
   list-style: none;
-  padding-left: 0;
 }
 
 .ingredient-list li {
-  position: relative;
-  padding: 7px 0 7px 22px;
-  border-bottom: 1px dotted var(--line);
+  display: grid;
+  grid-template-columns: 9.5rem minmax(0, 1fr);
+  gap: 14px;
+  padding: 11px 0;
+  margin: 0;
+  border-bottom: 1px dotted var(--line-strong);
   font-size: 0.95rem;
+  line-height: 1.6;
 }
 
-.ingredient-list li::before {
-  content: "";
-  position: absolute;
-  left: 4px;
-  top: 17px;
-  width: 7px;
-  height: 7px;
-  background-color: var(--primary);
-  border-radius: 50%;
+.ingredient-list li:last-child {
+  border-bottom: none;
 }
 
-/* Numbered method list */
-.method-list {
-  counter-reset: step;
-  list-style: none;
+.amount {
+  font-weight: 600;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Equipment */
+.equipment {
+  margin-top: 28px;
+  padding: 22px;
+  background-color: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.equipment h4 {
+  margin-bottom: 0.8em;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
   margin: 0;
   padding: 0;
+  list-style: none;
 }
 
-.method-list li {
-  counter-increment: step;
-  position: relative;
-  margin: 0 0 14px;
-  padding: 14px 18px 14px 56px;
-  background-color: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  font-size: 0.95rem;
-  transition: border-color 0.2s ease, transform 0.2s ease;
+.tag-list li {
+  margin: 0;
+  padding: 5px 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background-color: var(--ivory);
+  font-size: 0.78rem;
+  color: var(--muted);
 }
 
-.method-list li::before {
-  content: counter(step);
-  position: absolute;
-  left: 14px;
-  top: 14px;
-  width: 28px;
-  height: 28px;
-  display: grid;
-  place-items: center;
-  background-color: var(--primary);
-  color: #ffffff;
-  border-radius: 50%;
-  font-family: var(--font-head);
-  font-size: 0.9rem;
-  font-weight: 700;
-}
-
-.method-list li:hover {
-  border-color: var(--primary);
-  transform: translateX(3px);
-}
-
-.method-list strong {
-  color: var(--deep);
-}
-
-/* ---------- 10. Aside notes ---------- */
+/* ---------------------------------------------------------
+   11. Notes and callouts
+   --------------------------------------------------------- */
 .note {
-  margin-top: 24px;
-  padding: 18px 20px;
-  background-color: var(--tint);
-  border: 1px solid var(--line);
-  border-left: 4px solid var(--primary);
-  border-radius: var(--radius);
-  font-size: 0.92rem;
+  padding: 20px 24px;
+  background-color: var(--mist);
+  border-left: 2px solid var(--blue);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-size: 0.93rem;
 }
 
-.note h5 {
-  margin-bottom: 0.4em;
-  color: var(--primary-dark);
+.note-wide {
+  max-width: 70ch;
+  margin-top: 8px;
 }
 
 .note p:last-child {
   margin-bottom: 0;
 }
 
-/* ---------- 11. Gallery ---------- */
+.note-label {
+  margin-bottom: 0.45em;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--blue-dark);
+}
+
+/* ---------------------------------------------------------
+   12. Method steps
+   --------------------------------------------------------- */
+.method-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+
+.step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 26px 0 26px 78px;
+  margin: 0;
+  border-bottom: 1px solid var(--line);
+  counter-increment: step;
+  transition: background-color 0.3s var(--ease);
+}
+
+.step:last-child {
+  border-bottom: none;
+}
+
+.step::before {
+  content: counter(step, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 24px;
+  font-family: var(--display);
+  font-size: 1.9rem;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--brass);
+  font-variant-numeric: lining-nums;
+}
+
+.step:hover {
+  background-color: rgba(232, 242, 248, 0.5);
+}
+
+.step-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 0.35em;
+}
+
+.step h3 {
+  margin: 0;
+  font-size: 1.12rem;
+}
+
+.step p {
+  max-width: 66ch;
+  margin-bottom: 0;
+  font-size: 0.95rem;
+}
+
+.step-time {
+  flex: 0 0 auto;
+  padding: 3px 11px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background-color: var(--paper);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+/* ---------------------------------------------------------
+   13. Tables
+   --------------------------------------------------------- */
+.data-table {
+  width: 100%;
+  margin: 0 0 36px;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+  text-align: left;
+}
+
+.data-table caption {
+  padding-bottom: 14px;
+  font-family: var(--display);
+  font-size: 1.05rem;
+  color: var(--ink);
+  text-align: left;
+}
+
+.data-table thead th {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--line-strong);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.data-table tbody th,
+.data-table tbody td {
+  padding: 14px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+.data-table tbody th {
+  width: 30%;
+  font-weight: 500;
+  color: var(--ink);
+  text-align: left;
+}
+
+.data-table tbody tr:last-child th,
+.data-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.data-table tbody tr:hover {
+  background-color: rgba(232, 242, 248, 0.55);
+}
+
+.data-table-compact {
+  margin-top: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.data-table-compact tbody td {
+  font-family: var(--display);
+  font-size: 1.02rem;
+  color: var(--ink);
+}
+
+/* ---------------------------------------------------------
+   14. Info cards
+   --------------------------------------------------------- */
+.card-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.info-card {
+  padding: 24px;
+  background-color: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.3s var(--ease), transform 0.3s var(--ease);
+}
+
+.info-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+
+.info-card h3 {
+  margin-bottom: 0.5em;
+  font-size: 1.05rem;
+  color: var(--blue-dark);
+}
+
+.info-card p {
+  margin-bottom: 0;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+/* ---------------------------------------------------------
+   15. Variations
+   --------------------------------------------------------- */
+.variation-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+.variation {
+  padding: 26px 24px;
+  border-top: 2px solid var(--brass);
+  background-color: var(--paper);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.3s var(--ease), transform 0.3s var(--ease);
+}
+
+.variation:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+
+.variation-tag {
+  margin-bottom: 0.8em;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--brass);
+}
+
+.variation h3 {
+  margin-bottom: 0.5em;
+  font-size: 1.2rem;
+}
+
+.variation p:last-child {
+  margin-bottom: 0;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+/* ---------------------------------------------------------
+   16. Figures and gallery
+   --------------------------------------------------------- */
+.editorial-figure {
+  margin: 0;
+  border: 1px solid var(--line);
+  background-color: var(--paper);
+  box-shadow: var(--shadow-sm);
+}
+
+.editorial-figure img {
+  width: 100%;
+  height: clamp(240px, 38vw, 420px);
+  object-fit: cover;
+}
+
+.editorial-figure figcaption {
+  padding: 18px 22px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.fig-title {
+  display: block;
+  margin-bottom: 2px;
+  font-family: var(--display);
+  font-size: 1.05rem;
+  color: var(--ink);
+}
+
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 22px;
-  margin-top: 24px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.gallery-tight {
+  margin: 64px auto 0;
+  max-width: calc(var(--wrap) - var(--gutter) * 2);
 }
 
 .gallery figure {
   margin: 0;
-  background-color: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius);
+  background-color: var(--paper);
   overflow: hidden;
-  box-shadow: var(--shadow);
-  transition: box-shadow 0.25s ease, transform 0.25s ease;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.3s var(--ease), transform 0.3s var(--ease);
 }
 
 .gallery figure:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
 }
 
 .gallery img {
   width: 100%;
-  height: 200px;
+  height: 260px;
   object-fit: cover;
 }
 
 .gallery figcaption {
-  padding: 14px 16px;
-  font-size: 0.88rem;
+  padding: 16px 20px;
+  font-size: 0.86rem;
   color: var(--muted);
 }
 
 .credit {
   display: block;
   margin-top: 6px;
-  font-size: 0.75rem;
-  color: #7a8f9b;
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  color: #8598a5;
 }
 
-/* ---------- 12. Persuasive section ---------- */
-.persuasive {
-  background-color: var(--tint);
-  margin: 0 -24px;
-  padding: 44px 24px;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+/* ---------------------------------------------------------
+   17. Quotes
+   --------------------------------------------------------- */
+.quotes {
+  background-color: var(--deep);
+  color: #d9e8f0;
+  text-align: center;
 }
 
-.persuasive > p {
-  max-width: 70ch;
+.quotes .eyebrow {
+  color: var(--brass-light);
 }
 
-.argument-list {
-  list-style: none;
-  margin: 26px 0 0;
+.eyebrow-center {
+  text-align: center;
+}
+
+.pull-quote {
+  max-width: 46ch;
+  margin: 28px auto 56px;
   padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
+  border: none;
 }
 
-.argument-list li {
-  margin: 0;
-  padding: 22px;
-  background-color: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-}
-
-.argument-list h3 {
-  font-size: 1.08rem;
-  margin-bottom: 0.5em;
-  color: var(--primary-dark);
-}
-
-.argument-list p {
-  margin-bottom: 0;
-  font-size: 0.93rem;
-}
-
-/* ---------- 13. Quotes ---------- */
-.quotes blockquote {
-  margin: 0 0 22px;
-  padding: 22px 26px;
-  background-color: var(--surface);
-  border: 1px solid var(--line);
-  border-left: 5px solid var(--primary);
-  border-radius: 0 var(--radius) var(--radius) 0;
-  font-family: var(--font-head);
-  font-size: 1.05rem;
-  color: var(--deep);
-  box-shadow: var(--shadow);
-}
-
-.quotes blockquote p {
+.pull-quote p {
   margin-bottom: 0.6em;
+  font-family: var(--display);
+  font-size: clamp(1.6rem, 3.4vw, 2.6rem);
   font-style: italic;
+  font-weight: 400;
+  line-height: 1.32;
+  color: #ffffff;
 }
 
-.quotes blockquote footer {
-  background: none;
-  color: var(--muted);
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-  letter-spacing: 0.04em;
-  text-align: left;
-  padding: 0;
+.pull-quote p::before {
+  content: "\201C";
+  display: block;
+  margin-bottom: 0.1em;
+  font-family: var(--display);
+  font-size: 3rem;
+  line-height: 0.6;
+  color: var(--brass);
+}
+
+.pull-quote footer,
+.quote-pair footer {
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #9db8c7;
 }
 
 .quotes cite {
   font-style: normal;
-  font-weight: 700;
-  color: var(--primary);
+  color: var(--brass-light);
 }
 
-/* ---------- 14. Footer ---------- */
+.quote-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px;
+  max-width: 880px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.quote-pair blockquote {
+  margin: 0;
+  padding: 24px 26px;
+  border: 1px solid rgba(217, 232, 240, 0.18);
+  border-radius: var(--radius);
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+.quote-pair p {
+  margin-bottom: 0.7em;
+  font-family: var(--display);
+  font-size: 1.08rem;
+  font-style: italic;
+  line-height: 1.5;
+  color: #eef6fa;
+}
+
+/* ---------------------------------------------------------
+   18. Author card
+   --------------------------------------------------------- */
+.author-card {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin: 64px 0 0;
+  padding: 32px;
+  background-color: var(--ivory);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.author-monogram {
+  display: grid;
+  place-items: center;
+  flex: 0 0 74px;
+  width: 74px;
+  height: 74px;
+  margin: 0;
+  border: 1px solid var(--brass);
+  border-radius: 50%;
+  font-family: var(--display);
+  font-size: 1.9rem;
+  color: var(--brass);
+}
+
+.author-name {
+  margin-bottom: 0.2em;
+  font-size: 1.7rem;
+}
+
+.author-note {
+  max-width: 58ch;
+  margin-bottom: 0;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+/* ---------------------------------------------------------
+   19. Footer
+   --------------------------------------------------------- */
 .site-footer {
+  margin-top: clamp(64px, 8vw, 96px);
   background-color: var(--deep);
-  color: #d9e8f0;
-  text-align: center;
-  padding: 32px 24px;
-  font-size: 0.9rem;
+  color: #b7cdd9;
+  font-size: 0.88rem;
 }
 
-.site-footer p {
-  margin: 0 0 6px;
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1.4fr;
+  gap: 40px;
+  padding-top: 56px;
+  padding-bottom: 40px;
 }
 
 .footer-brand {
-  font-family: var(--font-head);
-  font-size: 1.15rem;
+  margin-bottom: 0.5em;
+  font-family: var(--display);
+  font-size: 1.35rem;
   color: #ffffff;
 }
 
-.footer-note {
-  color: #a9c4d3;
-  font-size: 0.82rem;
+.footer-blurb {
+  max-width: 34ch;
+  margin-bottom: 0;
+  color: #9db8c7;
 }
 
-/* ---------- 15. Responsive ---------- */
-@media (max-width: 820px) {
-  .recipe-columns {
+.footer-heading {
+  margin-bottom: 1em;
+  font-family: var(--body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--brass-light);
+}
+
+.footer-links {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: 0.6em;
+}
+
+.footer-links a {
+  color: #cfe0e9;
+}
+
+.footer-links a:hover,
+.footer-links a:focus-visible {
+  color: #ffffff;
+}
+
+.footer-credit {
+  margin-bottom: 0;
+  font-size: 0.8rem;
+  line-height: 1.7;
+  color: #8fa9b8;
+}
+
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 20px;
+  padding-bottom: 24px;
+  border-top: 1px solid rgba(217, 232, 240, 0.16);
+  font-size: 0.78rem;
+  color: #8fa9b8;
+}
+
+.footer-bottom p {
+  margin: 0;
+}
+
+.footer-bottom a {
+  color: var(--brass-light);
+}
+
+.footer-bottom a:hover,
+.footer-bottom a:focus-visible {
+  color: #ffffff;
+}
+
+/* ---------------------------------------------------------
+   20. Responsive
+   --------------------------------------------------------- */
+@media (max-width: 960px) {
+  .chapter-grid {
     grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .story-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .story-aside {
+    position: static;
+  }
+
+  .chapter-label {
+    position: static;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding-top: 0;
+  }
+
+  .chapter-number {
+    font-size: 1.6rem;
+  }
+
+  .chapter-number::after {
+    display: none;
+  }
+
+  .chapter-body > h2 {
+    max-width: none;
+  }
+
+  .card-row,
+  .variation-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .card-row .info-card:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer-grid .footer-col:first-child {
+    grid-column: 1 / -1;
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 720px) {
+  :root {
+    --gutter: 20px;
+  }
+
   body {
     font-size: 0.97rem;
   }
 
-  h1 { font-size: 1.7rem; }
-  h2 { font-size: 1.4rem; }
-
   .header-inner {
-    justify-content: center;
-    text-align: center;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
   }
 
   .site-nav ul {
+    gap: 2px 18px;
+  }
+
+  .site-nav a {
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+  }
+
+  .utility-inner {
     justify-content: center;
-    gap: 4px 14px;
+    text-align: center;
+    min-height: 34px;
   }
 
-  .hero img {
-    height: 300px;
+  .utility-meta {
+    display: none;
   }
 
-  .hero-title {
-    font-size: 1.5rem;
+  .hero-facts {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px 0;
+    padding-top: 20px;
   }
 
-  .hero-subtitle {
-    font-size: 0.9rem;
+  .hero-facts li:nth-child(odd) {
+    padding-left: 0;
+    border-left: none;
   }
 
-  .section {
-    padding: 32px 0;
+  .ingredient-columns {
+    grid-template-columns: 1fr;
   }
 
-  .persuasive {
-    margin: 0 -24px;
-    padding: 32px 24px;
+  .ingredient-list li {
+    grid-template-columns: 8rem minmax(0, 1fr);
+    font-size: 0.92rem;
   }
 
-  .method-list li {
-    padding: 12px 14px 12px 50px;
+  .step {
+    padding-left: 54px;
+  }
+
+  .step::before {
+    font-size: 1.45rem;
+    top: 28px;
+  }
+
+  .step-head {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .card-row,
+  .variation-grid,
+  .gallery,
+  .quote-pair {
+    grid-template-columns: 1fr;
+  }
+
+  .card-row .info-card:last-child {
+    grid-column: auto;
+  }
+
+  .data-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .data-table caption {
+    white-space: normal;
+  }
+
+  .author-card {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding-top: 40px;
   }
 
   .gallery img {
-    height: 180px;
+    height: 200px;
   }
 }
 
-/* ---------- 16. Motion and print ---------- */
+/* ---------------------------------------------------------
+   21. Motion preferences and print
+   --------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -612,21 +1449,23 @@ q {
     transition: none !important;
     animation: none !important;
   }
+
+  .button:hover,
+  .info-card:hover,
+  .variation:hover,
+  .gallery figure:hover {
+    transform: none;
+  }
 }
 
 @media print {
-  .site-header,
-  .skip-link,
-  .site-footer,
-  .hero figcaption {
-    background: none;
-    color: #000000;
-  }
-
-  .site-header,
-  .gallery,
-  .quotes {
-    display: none;
+  :root {
+    --paper: #ffffff;
+    --ivory: #ffffff;
+    --ink: #000000;
+    --text: #111111;
+    --muted: #333333;
+    --line: #cccccc;
   }
 
   body {
@@ -635,10 +1474,58 @@ q {
     font-size: 11pt;
   }
 
-  .method-list li,
-  .note,
-  .recipe-meta {
+  .utility,
+  .site-header,
+  .hero-actions,
+  .hero-media,
+  .quotes,
+  .gallery,
+  .footer-links,
+  .skip-link {
+    display: none;
+  }
+
+  .hero {
+    padding: 0;
+    background: none;
+    border: none;
+  }
+
+  .chapter {
+    padding: 18px 0;
+    page-break-inside: auto;
+  }
+
+  .chapter-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .chapter-label {
+    position: static;
+    padding: 0;
+  }
+
+  .chapter-number {
+    font-size: 1.2rem;
+  }
+
+  .step,
+  .info-card,
+  .data-table,
+  .recipe-aside {
     box-shadow: none;
-    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .site-footer {
+    margin-top: 24px;
+    background: none;
+    color: #000000;
+    border-top: 1px solid #000000;
+  }
+
+  .footer-grid,
+  .author-card {
+    display: none;
   }
 }
